@@ -93,21 +93,22 @@ export default function Home() {
             <div className="flex flex-col justify-center space-y-4 my-4 md:w-5/12 ">
               <div className="">
                 <h1 className="text-6xl">
-                  <span className="text-primary dark">sun</span>
-                  <span className="text-current">rise</span>
+                  <span className="text-primary dark">to</span>
+                  <span className="text-current">sume</span>
                 </h1>
                 <p className="text-muted-foreground italic text-sm">
                   - yet another osu! server
                 </p>
               </div>
               <p>
-                Features rich osu! server with support for Relax, Autopilot and
-                ScoreV2 gameplay, with a custom art‑state PP calculation system
-                tailored for Relax and Autopilot.
+                an unrestricted Sandbox, Cheating, and Testing Server
+                where the possibilities are endless in-game. From
+                embracing the serene realms of Relax Cheats to
+                venturing into uncharted territories
               </p>
               <div className="flex items-end space-x-4">
                 <Button
-                  className="from-red-400 via-orange-400 to-yellow-400 bg-gradient-to-r bg-size-300 animate-gradient hover:scale-105 smooth-transition"
+                  className="from-slate-700 via-slate-800 to-slate-900 bg-gradient-to-r bg-size-300 animate-gradient hover:scale-105 smooth-transition text-white"
                   size="lg"
                   asChild
                 >
@@ -235,9 +236,9 @@ export default function Home() {
           <PrettyHeader icon={<DoorOpen />} className="rounded-lg">
             <div className="flex flex-col md:flex-row space-y-2 w-full">
               <div className="w-full flex flex-col mx-2">
-                <p className="text-lg">Register osu!sunrise account</p>
+                <p className="text-lg">Register osu!tosume account</p>
                 <p className="text-muted-foreground text-sm">
-                  Account will allow you to join the osu!sunrise community
+                  Account will allow you to join the osu!tosume community
                 </p>
               </div>
               <Button className="md:w-1/3 md:m-0 w-full m-2" asChild>
@@ -251,7 +252,7 @@ export default function Home() {
                 <p className="text-lg">Follow the connection guide</p>
                 <p className="text-muted-foreground text-sm">
                   Which helps you set up your osu! client to connect to
-                  osu!sunrise
+                  osu!tosume
                 </p>
               </div>
               <Button className="md:w-1/3 md:m-0 w-full m-2" asChild>

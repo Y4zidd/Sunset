@@ -22,10 +22,10 @@ export default async function Footer() {
       )}
 
       <div className="md:flex grid justify-center space-x-4">
-        <p>© 2024-2025 Sunrise Community</p>
+        <p>© 2024-2025 tosume Community</p>
         <p>•</p>
         <a
-          href="https://github.com/SunriseCommunity"
+          href="https://github.com/Y4zidd/Sunrise"
           className="flex items-center justify-center space-x-1 hover:text-primary smooth-transition cursor-pointer"
         >
           <Github className="mr-1" />
@@ -33,7 +33,7 @@ export default async function Footer() {
         </a>
         <p>•</p>
         <a
-          href={`https://uptime.${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/`}
+          href={`https://uptime.${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/status/tosume`}
           className="flex items-center justify-center space-x-1 hover:text-primary smooth-transition cursor-pointer"
         >
           <ServerCrash className="mr-1" />

@@ -3,9 +3,9 @@ import TopPlaysPage from "./page";
 import { Suspense } from "react";
 
 export const metadata: Metadata = {
-  title: "Top Plays | osu!sunrise",
+  title: "Top Plays | osu!tosume",
   openGraph: {
-    title: "Top Plays | osu!sunrise",
+    title: "Top Plays | osu!tosume",
   },
 };
 

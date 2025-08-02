@@ -3,9 +3,9 @@ import PageLeaderboard from "./page";
 import { Suspense } from "react";
 
 export const metadata: Metadata = {
-  title: "Leaderboard | osu!sunrise",
+  title: "Leaderboard | osu!tosume",
   openGraph: {
-    title: "Leaderboard | osu!sunrise",
+    title: "Leaderboard | osu!tosume",
   },
 };
 

@@ -11,22 +11,22 @@ const font = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "osu!sunrise",
+  title: "osu!tosume",
   twitter: {
     card: "summary",
   },
-  description: "osu!sunrise is a private server for osu!, a rhythm game.",
+  description: "osu!tosume is a private server for osu!, a rhythm game.",
   openGraph: {
-    siteName: "osu!sunrise",
-    title: "osu!sunrise",
-    description: "osu!sunrise is a private server for osu!, a rhythm game.",
+    siteName: "osu!tosume",
+    title: "osu!tosume",
+    description: "osu!tosume is a private server for osu!, a rhythm game.",
 
     images: [
       {
         url: `https://${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/images/metadata.png`,
         width: 800,
         height: 800,
-        alt: "osu!sunrise Logo",
+        alt: "osu!tosume Logo",
       },
     ],
   },

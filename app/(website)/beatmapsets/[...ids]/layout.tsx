@@ -28,11 +28,11 @@ export async function generateMetadata(
     : null;
 
   return {
-    title: `${beatmapSet.artist} - ${beatmapSet.title} | osu!sunrise`,
+    title: `${beatmapSet.artist} - ${beatmapSet.title} | osu!tosume`,
     description: `Beatmapset info for ${beatmapSet.title} by ${beatmapSet.artist}`,
     openGraph: {
-      siteName: "osu!sunrise",
-      title: `${beatmapSet.artist} - ${beatmapSet.title} | osu!sunrise`,
+      siteName: "osu!tosume",
+      title: `${beatmapSet.artist} - ${beatmapSet.title} | osu!tosume`,
       description: `Beatmapset info for ${beatmapSet.title} by ${
         beatmapSet.artist
       } ${

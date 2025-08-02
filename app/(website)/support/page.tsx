@@ -28,11 +28,11 @@ export default function SupportUs() {
             <div className="flex lg:flex-row flex-col">
               <div className="space-y-4">
                 <h2 className="text-sm">
-                  While all osu!sunrise features has always been free, running
+                  While all osu!tosume features has always been free, running
                   and improving the server requires resources, time, and effort,
                   while being mainly maintained by a <b>single</b> developer.
                   <br />
-                  <br /> If you love osu!sunrise and want to see it grow even
+                  <br /> If you love osu!tosume and want to see it grow even
                   further, here are a few ways you can support us:
                 </h2>
 
@@ -71,7 +71,7 @@ export default function SupportUs() {
                   <li>
                     <span className="font-bold">Spread the Word.</span>
                     <p className="text-sm">
-                      The more people who know about osu!sunrise, the more
+                      The more people who know about osu!tosume, the more
                       vibrant and exciting our community will be. Tell your
                       friends, share on social media, and invite new players to
                       join.
@@ -80,7 +80,7 @@ export default function SupportUs() {
                   <li>
                     <span className="font-bold">Just Play on the Server.</span>
                     <p className="text-sm">
-                      One of the easiest ways to support osu!sunrise is simply
+                      One of the easiest ways to support osu!tosume is simply
                       by playing on the server! The more players we have, the
                       better the community and experience become. By joining in,
                       you’re helping to grow the server and keeping it active

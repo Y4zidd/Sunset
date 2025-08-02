@@ -45,74 +45,74 @@
 
 @layer base {
   :root {
-    --background: 0 0% 97.65%;
-    --foreground: 0 0% 12.55%;
-    --muted: 0 0% 93.73%;
-    --muted-foreground: 0 0% 39.22%;
-    --popover: 0 0% 98.82%;
-    --popover-foreground: 0 0% 12.55%;
-    --card: 0 0% 98.82%;
-    --card-foreground: 0 0% 12.55%;
-    --border: 0 0% 84.71%;
-    --input: 0 0% 94.12%;
-    --primary: 22.93 92.59% 52.35%;
-    --primary-foreground: 44 0% 100%;
-    --secondary: 34.05 100% 85.49%;
-    --secondary-foreground: 16.27 50.43% 22.94%;
-    --accent: 0 0% 90.98%;
-    --accent-foreground: 0 0% 12.55%;
-    --destructive: 10.16 77.87% 53.92%;
-    --destructive-foreground: 0 0% 100%;
-    --ring: 24.8 79.79% 63.14%;
-    --chart-1: 22.93 92.59% 52.35%;
-    --chart-2: 34.05 100% 85.49%;
-    --chart-3: 0 0% 90.98%;
-    --chart-4: 34.05 100% 88.49%;
-    --chart-5: 22.93 95.59% 52.35%;
+    --background: 0 0% 100%; /* Pure white background */
+    --foreground: 240 23% 9%; /* Dark text for contrast */
+    --muted: 0 0% 96%; /* Very light gray */
+    --muted-foreground: 240 10% 40%; /* Medium gray text */
+    --popover: 0 0% 100%; /* White popover */
+    --popover-foreground: 240 23% 9%; /* Dark text */
+    --card: 0 0% 100%; /* White card */
+    --card-foreground: 240 23% 9%; /* Dark text */
+    --border: 240 5% 84%; /* Light gray border */
+    --input: 240 5% 84%; /* Light gray input */
+    --primary: 232 97% 85%; /* Lavender - Primary color */
+    --primary-foreground: 240 23% 9%; /* Dark text on primary */
+    --secondary: 240 5% 96%; /* Very light gray secondary */
+    --secondary-foreground: 240 23% 9%; /* Dark text */
+    --accent: 240 5% 96%; /* Very light gray accent */
+    --accent-foreground: 240 23% 9%; /* Dark text */
+    --destructive: 0 84% 60%; /* Red destructive */
+    --destructive-foreground: 0 0% 100%; /* White text on red */
+    --ring: 232 97% 85%; /* Lavender ring */
+    --chart-1: 232 97% 85%; /* Lavender */
+    --chart-2: 267 84% 81%; /* Mauve */
+    --chart-3: 316 72% 86%; /* Pink */
+    --chart-4: 217 92% 76%; /* Blue */
+    --chart-5: 189 71% 73%; /* Sky */
     --radius: 0.5rem;
-    --sidebar-background: 0 0% 93%;
-    --sidebar-foreground: 0 0% 20%;
-    --sidebar-primary: 22.93 92.59% 40%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 0 0% 85%;
-    --sidebar-accent-foreground: 0 0% 15%;
-    --sidebar-border: 0 0% 80%;
-    --sidebar-ring: 22.93 90% 45%;
+    --sidebar-background: 0 0% 98%; /* Very light gray sidebar */
+    --sidebar-foreground: 240 23% 9%; /* Dark text */
+    --sidebar-primary: 232 97% 85%; /* Lavender primary */
+    --sidebar-primary-foreground: 240 23% 9%; /* Dark text */
+    --sidebar-accent: 240 5% 96%; /* Very light gray accent */
+    --sidebar-accent-foreground: 240 23% 9%; /* Dark text */
+    --sidebar-border: 240 5% 84%; /* Light gray border */
+    --sidebar-ring: 232 97% 85%; /* Lavender ring */
   }
 
   .dark {
-    --background: 20 14.3% 4.1%;
-    --foreground: 0 0% 95%;
-    --card: 24 9.8% 10%;
-    --card-foreground: 0 0% 95%;
-    --popover: 0 0% 9%;
-    --popover-foreground: 0 0% 95%;
-    --primary: 31 100% 50%;
-    --primary-foreground: 31 100% 10%;
-    --secondary: 31 14% 17%;
-    --secondary-foreground: 31 14% 77%;
-    --muted: 0 0% 15%;
-    --muted-foreground: 240 5% 64.9%;
-    --accent: 12 6.5% 15.1%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 60 9.1% 97.8%;
-    --border: 31 8% 13%;
-    --input: 31 8% 13%;
-    --ring: 31 100% 50%;
-    --chart-1: 31 100% 50%;
-    --chart-2: 31 14% 17%;
-    --chart-3: 31 23% 25%;
-    --chart-4: 31 14% 20%;
-    --chart-5: 31 103% 50%;
-    --sidebar-background: 24 9.8% 7.5%;
-    --sidebar-foreground: 0 0% 90%;
-    --sidebar-primary: 31 100% 45%;
-    --sidebar-primary-foreground: 31 100% 10%;
-    --sidebar-accent: 31 14% 20%;
-    --sidebar-accent-foreground: 0 0% 95%;
-    --sidebar-border: 31 8% 11%;
-    --sidebar-ring: 31 95% 45%;
+    --background: 240 23% 9%; /* Crust */
+    --foreground: 226 64% 88%; /* Text */
+    --card: 240 21% 12%; /* Mantle */
+    --card-foreground: 226 64% 88%; /* Text */
+    --popover: 240 21% 12%; /* Mantle */
+    --popover-foreground: 226 64% 88%; /* Text */
+    --primary: 232 97% 85%; /* Lavender */
+    --primary-foreground: 240 23% 9%; /* Crust */
+    --secondary: 234 13% 31%; /* Surface1 */
+    --secondary-foreground: 226 64% 88%; /* Text */
+    --muted: 233 12% 39%; /* Surface2 */
+    --muted-foreground: 228 17% 64%; /* Overlay2 */
+    --accent: 237 16% 23%; /* Surface0 */
+    --accent-foreground: 226 64% 88%; /* Text */
+    --destructive: 343 81% 75%; /* Red */
+    --destructive-foreground: 240 23% 9%; /* Crust */
+    --border: 231 11% 47%; /* Overlay0 */
+    --input: 231 11% 47%; /* Overlay0 */
+    --ring: 232 97% 85%; /* Lavender */
+    --chart-1: 232 97% 85%; /* Lavender */
+    --chart-2: 267 84% 81%; /* Mauve */
+    --chart-3: 316 72% 86%; /* Pink */
+    --chart-4: 217 92% 76%; /* Blue */
+    --chart-5: 189 71% 73%; /* Sky */
+    --sidebar-background: 240 23% 9%; /* Crust */
+    --sidebar-foreground: 226 64% 88%; /* Text */
+    --sidebar-primary: 232 97% 85%; /* Lavender */
+    --sidebar-primary-foreground: 240 23% 9%; /* Crust */
+    --sidebar-accent: 237 16% 23%; /* Surface0 */
+    --sidebar-accent-foreground: 226 64% 88%; /* Text */
+    --sidebar-border: 231 11% 47%; /* Overlay0 */
+    --sidebar-ring: 232 97% 85%; /* Lavender */
   }
 }
 

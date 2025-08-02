@@ -1,4 +1,4 @@
-# 🌇 Sunset - frontend for osu!sunrise
+# 🌇 Sunset - frontend for osu!tosume
 
 <p align="center">
   <img src="./readme.png" alt="We don't own the rights to this image. If you are the owner and want it removed, please contact us." />

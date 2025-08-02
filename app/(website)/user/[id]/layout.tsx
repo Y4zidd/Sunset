@@ -18,11 +18,11 @@ export async function generateMetadata(props: {
   }
 
   return {
-    title: `${user.username} · User Profile | osu!sunrise`,
+    title: `${user.username} · User Profile | osu!tosume`,
     description: `We don't know much about them, but we're sure ${user.username} is great.`,
     openGraph: {
-      siteName: "osu!sunrise",
-      title: `${user.username} · User Profile | osu!sunrise`,
+      siteName: "osu!tosume",
+      title: `${user.username} · User Profile | osu!tosume`,
       description: `We don't know much about them, but we're sure ${user.username} is great.`,
       images: [
         `https://a.${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/avatar/${user.user_id}`,

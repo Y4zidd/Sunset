@@ -74,11 +74,11 @@ const wikiContent = [
     content: (
       <RoundedContent>
         <div className="flex flex-col w-11/12 mx-auto">
-          <h1 className="text-xl">No. You will be banned if you are caught.</h1>
+          <h1 className="text-xl">Yes, you can cheat freely as you wish!</h1>
           <p className="mt-2">
-            We are very strict on cheating and do not tolerate it at all.
-            <br />
-            If you suspect someone of cheating, please report them to the staff.
+            This is an unrestricted sandbox server where cheating is allowed.
+            However, replay bots are strictly forbidden and will result in a ban.
+            If you suspect someone of using replay bots, please report them to the staff.
           </p>
         </div>
       </RoundedContent>
