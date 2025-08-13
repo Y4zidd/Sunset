@@ -97,14 +97,14 @@ export default function Home() {
                   <span className="text-current">sume</span>
                 </h1>
                 <p className="text-muted-foreground italic text-sm">
-                  - yet another osu! server
+                  - yet another osu! cheating server
                 </p>
               </div>
               <p>
-                an unrestricted Sandbox, Cheating, and Testing Server
-                where the possibilities are endless in-game. From
-                embracing the serene realms of Relax Cheats to
-                venturing into uncharted territories
+                a private osu! server where anything goes
+                unleash your potential with unlimited freedom. From
+                casual gameplay with assist modes to
+                pushing the limits of what's achievable
               </p>
               <div className="flex items-end space-x-4">
                 <Button
