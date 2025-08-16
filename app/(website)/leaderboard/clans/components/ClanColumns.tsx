@@ -58,7 +58,7 @@ export function createClanColumns(valueLabel: string): ColumnDef<ClanLeaderboard
         <Button
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-          className="justify-end text-sm w-full px-0"
+          className="justify-end text-sm w-full px-0 pr-5"
         >
           {valueLabel}
           {column.getIsSorted() === "asc" ? <SortAsc /> : column.getIsSorted() === "desc" ? <SortDesc /> : null}
@@ -66,7 +66,7 @@ export function createClanColumns(valueLabel: string): ColumnDef<ClanLeaderboard
       ),
       cell: ({ row }) => {
         const formatted = numberWith((row.original.value ?? 0).toFixed(2), ",");
-        return <div className="text-right font-bold text-foreground">{formatted}</div>;
+        return <div className="text-right font-bold text-foreground pr-5 whitespace-nowrap">{formatted}</div>;
       },
     },
     {
@@ -76,14 +76,14 @@ export function createClanColumns(valueLabel: string): ColumnDef<ClanLeaderboard
         <Button
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-          className="justify-end text-sm w-full px-0"
+          className="justify-end text-sm w-full px-0 pr-5"
         >
           Members
           {column.getIsSorted() === "asc" ? <SortAsc /> : column.getIsSorted() === "desc" ? <SortDesc /> : null}
         </Button>
       ),
       cell: ({ row }) => (
-        <div className="flex items-center justify-end gap-2 text-muted-foreground">
+        <div className="flex items-center justify-end gap-2 text-muted-foreground pr-5 whitespace-nowrap">
           <Users className="h-4 w-4" />
           <span className="text-sm">{numberWith(row.original.memberCount ?? 0, ",")}</span>
         </div>
