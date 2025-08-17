@@ -74,7 +74,7 @@ export default function UserPrivilegeBadges({
             key={`user-badge-${index}`}
             disabled={!withToolTip}
           >
-            <div className="bg-black/50 rounded-lg">
+            <div className="rounded-lg">
               <Badge
                 className={twMerge(
                   `flex text-white items-center text-xs p-1 rounded-lg ${color} smooth-transition`,
