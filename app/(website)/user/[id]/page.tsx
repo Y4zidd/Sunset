@@ -225,7 +225,7 @@ export default function UserPage(props: { params: Promise<{ id: number }> }) {
                         />
                       </div>
                       <div className="flex flex-col flex-grow min-w-0">
-                        <div className="flex flex-col md:flex-row flex-wrap gap-x-2">
+                        <div className="flex flex-col md:flex-row flex-wrap gap-x-1">
                           <Tooltip
                             className="flex flex-row min-w-0 space-x-2"
                             content={user.username}
@@ -241,14 +241,16 @@ export default function UserPage(props: { params: Promise<{ id: number }> }) {
                           </Tooltip>
 
                           <div className="gap-y-2">
-                            <UserPrivilegeBadges
-                              badges={[...user.badges]}
-                              small={true}
-                            />
-                            <UserCustomBadges
-                              customBadges={(user as any).custom_badges_detailed ?? (user as any).custom_badges}
-                              small
-                            />
+                            <div className="flex flex-wrap items-center gap-1">
+                              <UserPrivilegeBadges
+                                badges={[...user.badges]}
+                                small={true}
+                              />
+                              <UserCustomBadges
+                                customBadges={(user as any).custom_badges_detailed ?? (user as any).custom_badges}
+                                small
+                              />
+                            </div>
                           </div>
                         </div>
 
