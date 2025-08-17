@@ -40,6 +40,7 @@ import useSelf from "@/lib/hooks/useSelf";
 import UserGeneralInformation from "@/app/(website)/user/[id]/components/UserGeneralInformation";
 import { useUserMetadata } from "@/lib/hooks/api/user/useUserMetadata";
 import UserSocials from "@/app/(website)/user/[id]/components/UserSocials";
+import UserCustomBadges from "@/app/(website)/user/[id]/components/UserCustomBadges";
 
 const contentTabs = [
   "General",
@@ -243,6 +244,10 @@ export default function UserPage(props: { params: Promise<{ id: number }> }) {
                             <UserPrivilegeBadges
                               badges={[...user.badges]}
                               small={true}
+                            />
+                            <UserCustomBadges
+                              customBadges={(user as any).custom_badges_detailed ?? (user as any).custom_badges}
+                              small
                             />
                           </div>
                         </div>
