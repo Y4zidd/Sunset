@@ -10,6 +10,7 @@ import UserStatusText, {
 import Link from "next/link";
 import { MaterialSymbolsCircleOutline } from "@/components/ui/icons/circle-outline";
 import UserPrivilegeBadges from "@/app/(website)/user/[id]/components/UserPrivilegeBadges";
+import UserCustomBadges from "@/app/(website)/user/[id]/components/UserCustomBadges";
 import { UserResponse } from "@/lib/types/api";
 
 interface UserProfileBannerProps {
@@ -73,15 +74,24 @@ export default function UserElement({
                   alt="User Flag"
                   className="w-8 h-8 mr-4"
                 />
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-row flex-nowrap gap-0 items-center">
                   <div
                     onClick={(e) => {
                       e.preventDefault();
                       e.stopPropagation();
                     }}
-                    className="flex flex-row flex-wrap gap-2"
+                    className="flex flex-row flex-nowrap gap-0 items-center"
                   >
                     <UserPrivilegeBadges badges={user.badges} small={true} />
+                    <UserCustomBadges
+                      customBadges={
+                        (user as any).custom_badges_detailed ??
+                        (user as any).custom_badges
+                      }
+                      small
+                      withToolTip={true}
+                      className="ml-1"
+                    />
                   </div>
                 </div>
               </div>

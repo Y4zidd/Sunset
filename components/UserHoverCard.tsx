@@ -13,6 +13,7 @@ import Link from "next/link";
 import Image from "next/image";
 import ImageWithFallback from "@/components/ImageWithFallback";
 import UserPrivilegeBadges from "@/app/(website)/user/[id]/components/UserPrivilegeBadges";
+import UserCustomBadges from "@/app/(website)/user/[id]/components/UserCustomBadges";
 import { UserResponse } from "@/lib/types/api";
 
 export default function UserHoverCard({
@@ -33,7 +34,8 @@ export default function UserHoverCard({
       <HoverCardTrigger asChild={asChild}>{children}</HoverCardTrigger>
       <HoverCardContent
         align={align}
-        className="relative w-72 overflow-hidden p-0"
+        className="relative w-auto min-w-[18rem] max-w-none overflow-visible p-0"
+        sideOffset={8}
       >
         <div className="relative h-full place-content-between flex-col flex group-hover:cursor-pointer ">
           <ImageWithFallback
@@ -63,8 +65,8 @@ export default function UserHoverCard({
                 />
               </div>
 
-              <div className="line-clamp-1">
-                <div className="flex items-center line-clamp-1">
+              <div>
+                <div className="flex items-center">
                   <h2 className="text-white font-bold mr-2 truncate">
                     {user.username}
                   </h2>
@@ -75,15 +77,24 @@ export default function UserHoverCard({
                     alt="User Flag"
                     className="w-8 h-8 mr-4"
                   />
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-row flex-nowrap gap-0 items-center pr-2">
                     <div
                       onClick={(e) => {
                         e.preventDefault();
                         e.stopPropagation();
                       }}
-                      className="flex flex-row flex-wrap gap-2"
+                      className="flex flex-row flex-nowrap gap-0 items-center"
                     >
                       <UserPrivilegeBadges badges={user.badges} small={true} />
+                      <UserCustomBadges
+                        customBadges={
+                          (user as any).custom_badges_detailed ??
+                          (user as any).custom_badges
+                        }
+                        small
+                        withToolTip={true}
+                        className="ml-1"
+                      />
                     </div>
                   </div>
                 </div>
