@@ -47,12 +47,14 @@ export default function UserCustomBadges({
 
   function generateColorString(hex: string, alpha: number) {
     const { r, g, b } = hexToRgb(hex);
-    const textR = Math.min(255, Math.round(r * 1.2));
-    const textG = Math.min(255, Math.round(g * 1.2));
-    const textB = Math.min(255, Math.round(b * 1.2));
-    const borderR = Math.max(0, Math.round(r * 0.8));
-    const borderG = Math.max(0, Math.round(g * 0.8));
-    const borderB = Math.max(0, Math.round(b * 0.8));
+    // Text color lebih terang dari background (mirip dengan text-{color}-400)
+    const textR = Math.min(255, r + 60);
+    const textG = Math.min(255, g + 60);
+    const textB = Math.min(255, b + 60);
+    // Border lebih gelap (mirip dengan border-{color}-600)
+    const borderR = Math.max(0, Math.round(r * 0.7));
+    const borderG = Math.max(0, Math.round(g * 0.7));
+    const borderB = Math.max(0, Math.round(b * 0.7));
     return {
       background: `rgb(${r} ${g} ${b} / ${alpha})`,
       text: `rgb(${textR}, ${textG}, ${textB})`,
@@ -98,7 +100,7 @@ export default function UserCustomBadges({
         if (iconType === "emoji" && typeof iconNameRaw === "string") {
           icon = (
             <span
-              className={small ? "w-4 h-4 text-sm" : "w-4 h-4 md:w-6 md:h-6 text-base md:text-lg"}
+              className="w-4 h-4 md:w-6 md:h-6"
               role="img"
               aria-label={name}
             >
@@ -132,36 +134,37 @@ export default function UserCustomBadges({
         }
 
         return (
-          <React.Fragment key={`user-custom-badge-${index}`}>
-            <Tooltip content={<p className="capitalize">{name}</p>} disabled={!withToolTip}>
-              <div className="rounded-lg">
-                <Badge
-                  className={twMerge(
-                    `flex text-white items-center text-xs p-1 rounded-lg ${color} smooth-transition`,
-                    !small ? "md:text-base md:gap-2 md:p-1.5 gap-1" : "",
-                    withToolTip ? "hover:scale-105" : ""
-                  )}
-                  style={
-                    colorHex
-                      ? (() => {
-                          const colors = generateColorString(colorHex, tintAlpha);
-                          return {
-                            backgroundColor: colors.background,
-                            color: colors.text,
-                            borderColor: colors.border,
-                            borderWidth: '1px',
-                            borderStyle: 'solid'
-                          };
-                        })()
-                      : undefined
-                  }
-                >
-                  {icon}
-                  {!small && <span className="capitalize">{name}</span>}
-                </Badge>
-              </div>
-            </Tooltip>
-          </React.Fragment>
+          <Tooltip
+            content={<p className="capitalize">{name}</p>}
+            key={`user-custom-badge-${index}`}
+            disabled={!withToolTip}
+          >
+            <div className="rounded-lg">
+              <Badge
+                className={twMerge(
+                  `flex text-white items-center text-xs p-1 rounded-lg ${color} smooth-transition`,
+                  !small ? "md:text-base md:gap-2 md:p-1.5 gap-1" : "",
+                  withToolTip ? "hover:scale-105" : ""
+                )}
+                style={
+                  colorHex
+                    ? (() => {
+                        const colors = generateColorString(colorHex, tintAlpha);
+                        return {
+                          backgroundColor: colors.background,
+                          color: colors.text,
+                          borderColor: colors.border,
+                          borderWidth: '1px',
+                          borderStyle: 'solid'
+                        };
+                      })()
+                    : undefined
+                }
+              >
+                {icon}
+              </Badge>
+            </div>
+          </Tooltip>
         );
       })}
     </div>

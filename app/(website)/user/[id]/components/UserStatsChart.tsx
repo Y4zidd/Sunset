@@ -129,8 +129,8 @@ export default function UserStatsChart({ data, value: chartValue }: Props) {
         <Area
           type="monotone"
           dataKey={chartValue}
-          stroke="#E0C097"
-          fill="#E0C097"
+          stroke="hsl(var(--chart-1))"
+          fill="hsl(var(--chart-1))"
           baseValue={isChartReversed ? "dataMax" : "dataMin"}
           isAnimationActive={false}
         />

@@ -108,7 +108,7 @@ export default function Home() {
               </p>
               <div className="flex items-end space-x-4">
                 <Button
-                  className="from-slate-700 via-slate-800 to-slate-900 bg-gradient-to-r bg-size-300 animate-gradient hover:scale-105 smooth-transition text-white"
+                  className="bg-gradient-to-r from-[hsl(var(--chart-1))] via-[hsl(var(--primary))] to-[hsl(var(--chart-2))] bg-size-300 animate-gradient hover:scale-105 smooth-transition text-white shadow-lg"
                   size="lg"
                   asChild
                 >

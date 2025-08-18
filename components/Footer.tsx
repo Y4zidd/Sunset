@@ -12,10 +12,15 @@ export default async function Footer() {
       {process.env.NEXT_PUBLIC_OSU_SERVER_LIST_LINK && (
         <a
           href={process.env.NEXT_PUBLIC_OSU_SERVER_LIST_LINK}
-          className="flex items-center justify-center space-x-1 font-bold hover:scale-105  smooth-transition cursor-pointer "
+          className="flex items-center justify-center space-x-1 font-bold hover:scale-105  smooth-transition cursor-pointer group"
         >
-          <VoteIcon className="mr-1" />
-          <p className="from-stone-400 via-orange-300 to-amber-600 bg-gradient-to-r text-transparent bg-clip-text bg-size-300 animate-gradient ">
+          <VoteIcon className="mr-1 text-primary group-hover:text-chart-2 smooth-transition" />
+          <p 
+            className="font-semibold bg-gradient-to-r from-[hsl(var(--chart-1))] via-[hsl(var(--primary))] to-[hsl(var(--chart-2))] text-transparent bg-clip-text animate-gradient"
+            style={{
+              backgroundSize: '300%',
+            }}
+          >
             Please vote for us on osu-server-list!
           </p>
         </a>
