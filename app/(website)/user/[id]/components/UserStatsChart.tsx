@@ -17,13 +17,19 @@ interface Props {
 }
 
 export default function UserStatsChart({ data, value: chartValue }: Props) {
-  if (data.snapshots.length === 0) return null;
+  const normalized = (data.snapshots || []).map((s: any) => ({
+    saved_at: s.saved_at ?? s.savedAt,
+    global_rank: s.global_rank ?? s.rank,
+    country_rank: s.country_rank ?? s.countryRank,
+    pp: s.pp ?? s.performancePoints,
+  })) as StatsSnapshotResponse[];
 
-  data.snapshots = data.snapshots.filter(
-    (s) => s.country_rank > 0 && s.global_rank > 0
-  );
+  if (normalized.length === 0) return null;
 
-  const snapshots = [...data.snapshots];
+  const filtered = normalized.filter((s) => (s.country_rank ?? 0) > 0 && (s.global_rank ?? 0) > 0);
+  const base = filtered.length > 0 ? filtered : normalized;
+
+  const snapshots = [...base];
 
   var currentSnapshot = snapshots.pop();
   if (!currentSnapshot) return null;
@@ -90,11 +96,23 @@ export default function UserStatsChart({ data, value: chartValue }: Props) {
   }
 
   result.push(currentSnapshot);
+
+  if (result.length === 1) {
+    const only = result[0];
+    const prev = {
+      ...only,
+      saved_at: new Date(new Date(only.saved_at).getTime() - 24 * 3600 * 1000).toISOString(),
+    } as StatsSnapshotResponse;
+    result.unshift(prev);
+  }
+
   result = result.slice(-60);
 
   const chartData = Array.from(result.values()).map((s) => {
+    const ts = new Date(s.saved_at).getTime();
+    const label = Number.isFinite(ts) ? timeSince(s.saved_at, true) : "Today";
     return {
-      date: timeSince(s.saved_at, true),
+      date: label,
       pp: s.pp,
       rank: s.global_rank,
     };
