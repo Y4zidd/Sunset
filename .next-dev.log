@@ -1,0 +1,189 @@
+
+> sunset@0.1.0 dev
+> next dev --turbo --port 3091 --hostname 0.0.0.0
+
+   ▲ Next.js 15.3.0 (Turbopack)
+   - Local:        http://localhost:3091
+   - Network:      http://0.0.0.0:3091
+   - Environments: .env.local
+
+ ✓ Starting...
+ ✓ Ready in 1008ms
+ ○ Compiling /clan/leaderboard ...
+ ✓ Compiled /clan/leaderboard in 14.3s
+ GET /clan/leaderboard 200 in 14937ms
+ ⚠ Cross origin request detected from 18.141.204.239 to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
+Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
+ ○ Compiling /_not-found/page ...
+ ✓ Compiled /_not-found/page in 3s
+ GET /clan/8 404 in 3105ms
+ GET /clan/8 404 in 32ms
+ GET /clan/8 404 in 111ms
+ GET /clan/leaderboard?mode=Standard&metric=Accuracy 200 in 170ms
+ GET /clan/leaderboard?mode=Standard&metric=Accuracy&page=0 200 in 580ms
+ ○ Compiling /leaderboard ...
+ ✓ Compiled /leaderboard in 16.2s
+ GET /leaderboard 200 in 16262ms
+ ⨯ upstream image response failed for https://a.dev.tosume.me/banner/1002&default=false 400
+ ⨯ upstream image response failed for https://a.dev.tosume.me/banner/1003&default=false 400
+ ⨯ upstream image response failed for https://a.dev.tosume.me/banner/1001&default=false 400
+ GET /clan/leaderboard 200 in 454ms
+ GET /clan/leaderboard?page=0 200 in 124ms
+ GET /clan/8 404 in 39ms
+ GET /clan/8 404 in 121ms
+ GET /clan/leaderboard?page=0 200 in 124ms
+ ✓ Compiled in 2.4s
+ ✓ Compiled /clan/leaderboard in 29ms
+ GET /clan/leaderboard?page=0 200 in 449ms
+ GET /clan/leaderboard?page=0 200 in 127ms
+ ✓ Compiled in 4s
+ GET /clan/leaderboard?page=0 200 in 421ms
+ GET /leaderboard 200 in 84ms
+ ⨯ upstream image response failed for https://a.dev.tosume.me/banner/1003&default=false 400
+ ⨯ upstream image response failed for https://a.dev.tosume.me/banner/1001&default=false 400
+ ⨯ upstream image response failed for https://a.dev.tosume.me/banner/1002&default=false 400
+ GET /clan/leaderboard 200 in 384ms
+ GET /clan/leaderboard 200 in 122ms
+ ✓ Compiled in 3.3s
+ GET /clan/leaderboard?page=0 200 in 449ms
+ GET /clan/leaderboard?page=0 200 in 588ms
+ GET /clan/leaderboard?page=0 200 in 136ms
+ ✓ Compiled in 3.9s
+ GET /clan/leaderboard?page=0 200 in 441ms
+ GET /clan/leaderboard?page=0 200 in 130ms
+ GET /leaderboard 200 in 91ms
+ ⨯ upstream image response failed for https://a.dev.tosume.me/banner/1003&default=false 400
+ ⨯ upstream image response failed for https://a.dev.tosume.me/banner/1001&default=false 400
+ ⨯ upstream image response failed for https://a.dev.tosume.me/banner/1002&default=false 400
+ GET /clan/leaderboard?page=0 200 in 518ms
+ GET /leaderboard 200 in 100ms
+ ⨯ upstream image response failed for https://a.dev.tosume.me/banner/1003&default=false 400
+ ⨯ upstream image response failed for https://a.dev.tosume.me/banner/1001&default=false 400
+ ⨯ upstream image response failed for https://a.dev.tosume.me/banner/1002&default=false 400
+ ○ Compiling /topplays ...
+ ✓ Compiled /topplays in 8s
+ GET /topplays 200 in 8044ms
+ GET /clan/leaderboard?page=0 200 in 140ms
+ ✓ Compiled in 4.3s
+ GET /clan/leaderboard?page=0 200 in 447ms
+ ✓ Compiled in 3.2s
+ GET /clan/leaderboard?page=0 200 in 500ms
+ GET /leaderboard 200 in 139ms
+ ⨯ upstream image response failed for https://a.dev.tosume.me/banner/1002&default=false 400
+ ⨯ upstream image response failed for https://a.dev.tosume.me/banner/1003&default=false 400
+ ⨯ upstream image response failed for https://a.dev.tosume.me/banner/1001&default=false 400
+ GET /leaderboard?size=10 200 in 487ms
+ ⨯ upstream image response failed for https://a.dev.tosume.me/banner/1003&default=false 400
+ ⨯ upstream image response failed for https://a.dev.tosume.me/banner/1002&default=false 400
+ ⨯ upstream image response failed for https://a.dev.tosume.me/banner/1001&default=false 400
+ GET /topplays?mode=Standard 200 in 557ms
+ GET /leaderboard?page=0 200 in 139ms
+ ⨯ upstream image response failed for https://a.dev.tosume.me/banner/1003&default=false 400
+ ⨯ upstream image response failed for https://a.dev.tosume.me/banner/1001&default=false 400
+ ⨯ upstream image response failed for https://a.dev.tosume.me/banner/1002&default=false 400
+ GET /clan/leaderboard?page=0 200 in 136ms
+ ✓ Compiled in 3.2s
+ GET /clan/leaderboard?page=0 200 in 595ms
+ GET /clan/8 404 in 146ms
+ GET /clan/8 404 in 123ms
+ GET /clan/leaderboard?page=0 200 in 146ms
+ GET /leaderboard 200 in 43ms
+ ⨯ upstream image response failed for https://a.dev.tosume.me/banner/1002&default=false 400
+ ⨯ upstream image response failed for https://a.dev.tosume.me/banner/1003&default=false 400
+ ⨯ upstream image response failed for https://a.dev.tosume.me/banner/1001&default=false 400
+ GET /clan/leaderboard?page=0 200 in 140ms
+ ✓ Compiled in 2.8s
+ GET /clan/leaderboard?page=0 200 in 627ms
+ GET /leaderboard 200 in 47ms
+ ⨯ upstream image response failed for https://a.dev.tosume.me/banner/1002&default=false 400
+ ⨯ upstream image response failed for https://a.dev.tosume.me/banner/1001&default=false 400
+ ⨯ upstream image response failed for https://a.dev.tosume.me/banner/1003&default=false 400
+ GET /clan/leaderboard?page=0 200 in 172ms
+ ✓ Compiled /clan/leaderboard in 329ms
+ GET /clan/leaderboard?page=0 200 in 957ms
+ GET /clan/leaderboard?page=0 200 in 872ms
+ GET /clan/leaderboard?page=0 200 in 220ms
+ GET /leaderboard 200 in 183ms
+ ⨯ upstream image response failed for https://a.dev.tosume.me/banner/1002&default=false 400
+ ⨯ upstream image response failed for https://a.dev.tosume.me/banner/1003&default=false 400
+ ⨯ upstream image response failed for https://a.dev.tosume.me/banner/1001&default=false 400
+ GET /clan/leaderboard?page=0 200 in 166ms
+ GET /clan/leaderboard 200 in 147ms
+ GET /leaderboard 200 in 42ms
+ ⨯ upstream image response failed for https://a.dev.tosume.me/banner/1003&default=false 400
+ ⨯ upstream image response failed for https://a.dev.tosume.me/banner/1001&default=false 400
+ ⨯ upstream image response failed for https://a.dev.tosume.me/banner/1002&default=false 400
+ GET /topplays 200 in 54ms
+ GET /leaderboard 200 in 43ms
+ ⨯ upstream image response failed for https://a.dev.tosume.me/banner/1003&default=false 400
+ ⨯ upstream image response failed for https://a.dev.tosume.me/banner/1002&default=false 400
+ ⨯ upstream image response failed for https://a.dev.tosume.me/banner/1001&default=false 400
+ GET /clan/leaderboard 200 in 134ms
+ ✓ Compiled in 4.4s
+ ○ Compiling / ...
+ ✓ Compiled / in 3.5s
+ GET / 200 in 3741ms
+ ○ Compiling /api/getVideo ...
+ ✓ Compiled /api/getVideo in 1615ms
+ GET /api/getVideo?id=1 206 in 3545ms
+ GET /api/getVideo?id=1 206 in 2314ms
+ GET /api/getVideo?id=1 206 in 2304ms
+ GET /api/getVideo?id=1 206 in 2255ms
+ GET /api/getVideo?id=1 206 in 1030ms
+ ✓ Compiled in 2.6s
+ GET / 200 in 627ms
+ GET /api/getVideo?id=1 206 in 1367ms
+ GET /clan/leaderboard 200 in 149ms
+ GET /api/getVideo?id=0 206 in 2511ms
+ GET /api/getVideo?id=0 206 in 1968ms
+ GET /api/getVideo?id=0 206 in 2304ms
+ ✓ Compiled in 2.5s
+ GET /api/getVideo?id=0 206 in 2357ms
+ GET /clan/leaderboard?page=0 200 in 956ms
+ GET /robots.txt 404 in 340ms
+ GET / 200 in 190ms
+ GET /leaderboard 200 in 205ms
+ GET /leaderboard 200 in 534ms
+ ⨯ upstream image response failed for https://a.dev.tosume.me/banner/1003&default=false 400
+ ⨯ upstream image response failed for https://a.dev.tosume.me/banner/1002&default=false 400
+ ⨯ upstream image response failed for https://a.dev.tosume.me/banner/1001&default=false 400
+ ⨯ upstream image response failed for https://a.dev.tosume.me/banner/1003&default=false 400
+ ⨯ upstream image response failed for https://a.dev.tosume.me/banner/1003&default=false 400
+ ⨯ upstream image response failed for https://a.dev.tosume.me/banner/1001&default=false 400
+ ⨯ upstream image response failed for https://a.dev.tosume.me/banner/1002&default=false 400
+ GET /clan/leaderboard 200 in 176ms
+ GET /clan/leaderboard?page=0&metric=Accuracy&mode=Standard 200 in 301ms
+ GET /leaderboard 200 in 54ms
+ GET /clan/leaderboard 200 in 50ms
+ ✓ Compiled in 3.8s
+ GET /clan/leaderboard?page=0&metric=Accuracy 200 in 293ms
+ GET /leaderboard 200 in 416ms
+ ⨯ upstream image response failed for https://a.dev.tosume.me/banner/1003&default=false 400
+ ⨯ upstream image response failed for https://a.dev.tosume.me/banner/1002&default=false 400
+ ⨯ upstream image response failed for https://a.dev.tosume.me/banner/1001&default=false 400
+ GET /clan/leaderboard 200 in 58ms
+ GET /leaderboard 200 in 50ms
+ ⨯ upstream image response failed for https://a.dev.tosume.me/banner/1003&default=false 400
+ ⨯ upstream image response failed for https://a.dev.tosume.me/banner/1002&default=false 400
+ ⨯ upstream image response failed for https://a.dev.tosume.me/banner/1001&default=false 400
+ GET /clan/leaderboard 200 in 47ms
+ GET /leaderboard 200 in 44ms
+ ⨯ upstream image response failed for https://a.dev.tosume.me/banner/1003&default=false 400
+ ⨯ upstream image response failed for https://a.dev.tosume.me/banner/1002&default=false 400
+ ⨯ upstream image response failed for https://a.dev.tosume.me/banner/1001&default=false 400
+ GET /clan/leaderboard 200 in 50ms
+ GET /leaderboard 200 in 43ms
+ ⨯ upstream image response failed for https://a.dev.tosume.me/banner/1003&default=false 400
+ ⨯ upstream image response failed for https://a.dev.tosume.me/banner/1002&default=false 400
+ ⨯ upstream image response failed for https://a.dev.tosume.me/banner/1001&default=false 400
+ GET /clan/leaderboard 200 in 51ms
+ GET /leaderboard 200 in 43ms
+ ⨯ upstream image response failed for https://a.dev.tosume.me/banner/1003&default=false 400
+ ⨯ upstream image response failed for https://a.dev.tosume.me/banner/1002&default=false 400
+ ⨯ upstream image response failed for https://a.dev.tosume.me/banner/1001&default=false 400
+ GET /clan/leaderboard 200 in 46ms
+ GET /leaderboard 200 in 50ms
+ ⨯ upstream image response failed for https://a.dev.tosume.me/banner/1003&default=false 400
+ ⨯ upstream image response failed for https://a.dev.tosume.me/banner/1001&default=false 400
+ ⨯ upstream image response failed for https://a.dev.tosume.me/banner/1002&default=false 400
+ GET /clan/leaderboard 200 in 43ms

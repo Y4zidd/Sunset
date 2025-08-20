@@ -164,9 +164,9 @@ export const userColumns: ColumnDef<{
         <Button
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-          className="justify-end text-sm w-full px-0"
+          className="justify-end text-base w-full px-0 !font-bold"
         >
-          Accuracy
+          <span className="!font-bold">Accuracy</span>
           {column.getIsSorted() === "asc" ? (
             <SortAsc />
           ) : column.getIsSorted() === "desc" ? (
@@ -191,9 +191,9 @@ export const userColumns: ColumnDef<{
         <Button
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-          className="justify-end text-sm w-full px-0"
+          className="justify-end text-base w-full px-0 !font-bold"
         >
-          Play count
+          <span className="!font-bold">Play count</span>
           {column.getIsSorted() === "asc" ? (
             <SortAsc />
           ) : column.getIsSorted() === "desc" ? (
