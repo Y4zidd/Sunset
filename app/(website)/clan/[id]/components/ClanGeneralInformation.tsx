@@ -10,7 +10,7 @@ interface ClanGeneralInformationProps {
 
 export default function ClanGeneralInformation({ tag, createdAt, memberCount }: ClanGeneralInformationProps) {
   return (
-    <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm my-1 text-muted-foreground/70 mt-3">
+    <div className="flex flex-wrap gap-x-4 gap-y-2 text-sm my-1 text-muted-foreground/70 mt-3">
       <Badge
         variant="secondary"
         className="text-xs rounded-xl border-primary/30 bg-primary/5 text-primary px-3 py-1 shadow-sm"

@@ -8,6 +8,9 @@ import { Users as UsersIcon } from "lucide-react";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import RequestJoinButton from "./components/RequestJoinButton";
 import ClanGeneralInformation from "./components/ClanGeneralInformation";
+import ClanInfoPanel from "./components/ClanInfoPanel";
+import ClanPerformancePanel from "./components/ClanPerformancePanel";
+import ClanMembersPanel from "./components/ClanMembersPanel";
 import { useClan } from "@/lib/hooks/api/clan/useClan";
 import useSelf from "@/lib/hooks/useSelf";
 import GameModeSelector from "@/components/GameModeSelector";
@@ -23,9 +26,7 @@ export default function ClanPage(props: { params: Promise<{ id: number }> }) {
   const { self } = useSelf();
 
   const showRequestJoin = (() => {
-    if (!self || !clan) return false; // non-login: jangan tampilkan tombol
-    // Jika nanti API mengembalikan informasi membership, bisa diganti cek yang benar.
-    // Untuk sementara: sembunyikan jika user adalah owner
+    if (!self || !clan) return false;
     return self.user_id !== clan.ownerId;
   })();
 
@@ -45,7 +46,6 @@ export default function ClanPage(props: { params: Promise<{ id: number }> }) {
           {clan ? (
             <>
               <div className="lg:h-64 md:h-44 h-32 relative">
-                {/* Banner placeholder */}
                 <Image
                   src="/images/placeholder.png"
                   alt="Clan banner"
@@ -57,7 +57,6 @@ export default function ClanPage(props: { params: Promise<{ id: number }> }) {
                   <div className="relative overflow-hidden px-4 py-2 md:p-6 flex items-end place-content-between flex-grow">
                     <div className="flex items-end space-x-4 w-3/4 ">
                       <div className="relative w-16 h-16 md:w-32 md:h-32 flex-none">
-                        {/* Avatar placeholder (pakai tag) */}
                         <Avatar className="w-full h-full rounded-full border-2 md:border-4 border-secondary">
                           <AvatarFallback className="text-lg md:text-2xl font-bold">{clan.tag}</AvatarFallback>
                         </Avatar>
@@ -81,7 +80,21 @@ export default function ClanPage(props: { params: Promise<{ id: number }> }) {
                   </div>
                   {showRequestJoin ? <RequestJoinButton clanId={clan.id} /> : null}
                 </div>
-                {/* Tabs section untuk tahap berikutnya */}
+                
+                {/* Info and Performance Panels */}
+                <div className="grid grid-cols-1 lg:grid-cols-3 lg:gap-4 gap-4 mt-6">
+                  <div className="flex flex-col col-span-2 sm:col-span-1">
+                    <ClanInfoPanel clan={clan} />
+                  </div>
+                  <div className="flex flex-col col-span-2">
+                    <ClanPerformancePanel clan={clan} />
+                  </div>
+                </div>
+
+                {/* Clan Members Panel */}
+                <div className="mt-6">
+                  <ClanMembersPanel clan={clan} />
+                </div>
               </div>
             </>
           ) : (
