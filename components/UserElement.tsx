@@ -49,7 +49,7 @@ export default function UserElement({
           href={`/user/${user.user_id}`}
           className="relative flex place-content-between h-24 p-4"
         >
-          <div className="relative flex items-start overflow-hidden">
+          <div className="relative flex items-start overflow-hidden flex-1 min-w-0">
             {/* Profile Picture */}
             <div className="rounded-full flex-none overflow-hidden border-2 border-white mr-4">
               <Image
@@ -62,37 +62,28 @@ export default function UserElement({
             </div>
 
             {/* Username, Flag, and Status */}
-            <div className="line-clamp-1">
-              <div className="flex items-center mb-1 line-clamp-1">
+            <div className="flex flex-col flex-1 min-w-0">
+              <div className="flex items-center mb-1">
                 <h2 className="text-white md:text-lg lg:text-xl font-bold mr-2 truncate">
                   {user.username}
                 </h2>
               </div>
-              <div className="flex items-center">
+              <div className="flex items-center flex-wrap gap-2">
                 <img
                   src={`/images/flags/${user.country_code}.png`}
                   alt="User Flag"
-                  className="w-8 h-8 mr-4"
+                  className="w-8 h-8 flex-shrink-0"
                 />
-                <div className="flex flex-row flex-nowrap gap-0 items-center">
-                  <div
-                    onClick={(e) => {
-                      e.preventDefault();
-                      e.stopPropagation();
-                    }}
-                    className="flex flex-row flex-nowrap gap-0 items-center"
-                  >
-                    <UserPrivilegeBadges badges={user.badges} small={true} />
-                    <UserCustomBadges
-                      customBadges={
-                        (user as any).custom_badges_detailed ??
-                        (user as any).custom_badges
-                      }
-                      small
-                      withToolTip={true}
-                      className="ml-1"
-                    />
-                  </div>
+                <div className="flex items-center gap-1 flex-shrink-0">
+                  <UserPrivilegeBadges badges={user.badges} small={true} />
+                  <UserCustomBadges
+                    customBadges={
+                      (user as any).custom_badges_detailed ??
+                      (user as any).custom_badges
+                    }
+                    small
+                    withToolTip={true}
+                  />
                 </div>
               </div>
             </div>
@@ -101,7 +92,7 @@ export default function UserElement({
           {includeFriendshipButton && (
             <FriendshipButton
               userId={user.user_id}
-              className="w-10 h-10"
+              className="w-10 h-10 flex-shrink-0"
               includeText={false}
             />
           )}
