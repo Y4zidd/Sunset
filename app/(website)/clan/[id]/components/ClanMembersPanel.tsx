@@ -2,23 +2,65 @@ import { Users } from "lucide-react";
 import PrettyHeader from "@/components/General/PrettyHeader";
 import RoundedContent from "@/components/General/RoundedContent";
 import { ClanDetailResponse } from "@/lib/hooks/api/clan/useClan";
-import ClanMemberUserElement from "./ClanMemberUserElement";
+import { UsersList } from "@/app/(website)/friends/components/UsersList";
+import { CountryCode, GameMode, UserResponse } from "@/lib/types/api";
+import { useEffect, useMemo, useState } from "react";
+import fetcher from "@/lib/services/fetcher";
 
 interface ClanMembersPanelProps {
 	clan: ClanDetailResponse;
 }
 
 export default function ClanMembersPanel({ clan }: ClanMembersPanelProps) {
+	const fallbackUsers = useMemo<UserResponse[]>(
+		() =>
+			(clan.members || []).map((member) => ({
+				user_id: member.id,
+				username: member.name,
+				description: null,
+				country_code: (member.country as CountryCode) || CountryCode.XX,
+				register_date: new Date().toISOString(),
+				avatar_url: `https://a.${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/avatar/${member.id}`,
+				banner_url: `https://a.${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/banner/${member.id}`,
+				last_online_time: new Date().toISOString(),
+				restricted: false,
+				silenced_until: null,
+				default_gamemode: GameMode.STANDARD,
+				badges: [],
+				user_status: "Offline",
+			})),
+		[clan.members]
+	);
+
+	const [users, setUsers] = useState<UserResponse[]>(fallbackUsers);
+
+	useEffect(() => {
+		let cancelled = false;
+		async function loadDetails() {
+			try {
+				const ids = (clan.members || []).map((m) => m.id);
+				if (ids.length === 0) return;
+				const results = await Promise.all(
+					ids.map((id) => fetcher<UserResponse>(`user/${id}`).catch(() => null))
+				);
+				const detailed = results.filter(Boolean) as UserResponse[];
+				if (!cancelled && detailed.length > 0) {
+					setUsers(detailed);
+				}
+			} catch {}
+		}
+		loadDetails();
+		return () => {
+			cancelled = true;
+		};
+	}, [clan.members]);
+
 	return (
 		<div className="w-full">
 			<PrettyHeader text="Clan Members" icon={<Users className="mr-2" />} className="border-b-0" />
 			<div className="rounded-b-3xl bg-card mb-4 border border-t-0 shadow">
 				<RoundedContent className="rounded-t-xl border-none shadow-none">
-					<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-						{(clan.members || []).map((m) => (
-							<ClanMemberUserElement key={m.id} userId={m.id} username={m.name} country={m.country} />
-						))}
-					</div>
+					<UsersList users={users} viewMode="grid" includeFriendshipButton={false} />
 				</RoundedContent>
 			</div>
 		</div>

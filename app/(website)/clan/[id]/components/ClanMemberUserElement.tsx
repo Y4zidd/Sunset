@@ -30,7 +30,11 @@ export default function ClanMemberUserElement({ userId, username, country }: Cla
     user_status: "offline",
   };
 
-  return <UserElement user={data ?? fallbackUser} includeFriendshipButton className="h-36" />;
+  return (
+    <div className="w-full max-w-[480px]">
+      <UserElement user={data ?? fallbackUser} includeFriendshipButton className="h-36" />
+    </div>
+  );
 }
 
 

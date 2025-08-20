@@ -6,9 +6,10 @@ import { UserResponse } from "@/lib/types/api";
 interface UsersListProps {
   users: UserResponse[];
   viewMode: UsersListViewModeType;
+  includeFriendshipButton?: boolean;
 }
 
-export function UsersList({ users, viewMode }: UsersListProps) {
+export function UsersList({ users, viewMode, includeFriendshipButton = true }: UsersListProps) {
   if (users.length === 0) {
     return (
       <div className="text-center py-12 text-accent-foreground">
@@ -27,9 +28,9 @@ export function UsersList({ users, viewMode }: UsersListProps) {
     >
       {users.map((user) =>
         viewMode === "grid" ? (
-          <UserElement key={user.user_id} user={user} includeFriendshipButton />
+          <UserElement key={user.user_id} user={user} includeFriendshipButton={includeFriendshipButton} />
         ) : (
-          <UserListItem key={user.user_id} user={user} />
+          <UserListItem key={user.user_id} user={user} includeFriendshipButton={includeFriendshipButton} />
         )
       )}
     </div>
