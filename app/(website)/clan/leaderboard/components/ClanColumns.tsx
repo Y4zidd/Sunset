@@ -6,6 +6,7 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { MoreHorizontal, SortAsc, SortDesc, Users } from "lucide-react";
 import Link from "next/link";
 import { ClanLeaderboardItem, ClanLeaderboardMetricUi } from "@/lib/hooks/api/clan/useClansLeaderboard";
+import UserRankColor from "@/components/UserRankNumber";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -41,7 +42,13 @@ export function getClanColumns(metric: ClanLeaderboardMetricUi): ColumnDef<ClanL
       const textSize =
         value === 1 ? "text-2xl" : value === 2 ? "text-lg" : value === 3 ? "text-base" : "text-ms";
       return (
-        <div className={`w-24 text-center font-bold whitespace-nowrap ${textSize}`}># {value}</div>
+        <UserRankColor
+          rank={value}
+          variant="primary"
+          className={`w-24 text-center font-bold whitespace-nowrap ${textSize}`}
+        >
+          # {value}
+        </UserRankColor>
       );
     },
     sortingFn: (a, b) => (a.original.rank ?? 0) - (b.original.rank ?? 0),
@@ -64,11 +71,14 @@ export function getClanColumns(metric: ClanLeaderboardMetricUi): ColumnDef<ClanL
           <Avatar className="border-2 border-white w-[50px] h-[50px] shrink-0">
             <AvatarFallback className="text-[11px] font-bold">{tag}</AvatarFallback>
           </Avatar>
-          <Link
-            href={`/clan/${clanId}`}
-            className="hover:underline cursor-pointer smooth-transition text-lg font-bold"
-          >
-            {name}
+          <Link href={`/clan/${clanId}`} className="hover:underline cursor-pointer smooth-transition">
+            <UserRankColor
+              rank={row.original.rank}
+              variant="primary"
+              className="text-lg font-bold"
+            >
+              {name}
+            </UserRankColor>
           </Link>
         </div>
       );
