@@ -11,6 +11,7 @@ import ClanGeneralInformation from "./components/ClanGeneralInformation";
 import ClanInfoPanel from "./components/ClanInfoPanel";
 import ClanPerformancePanel from "./components/ClanPerformancePanel";
 import ClanMembersPanel from "./components/ClanMembersPanel";
+import ClanRecentScoresPanel from "./components/ClanRecentScoresPanel";
 import { useClan } from "@/lib/hooks/api/clan/useClan";
 import useSelf from "@/lib/hooks/useSelf";
 import GameModeSelector from "@/components/GameModeSelector";
@@ -32,7 +33,7 @@ export default function ClanPage(props: { params: Promise<{ id: number }> }) {
 
   return (
     <div className="flex flex-col space-y-4">
-      <PrettyHeader icon={<UsersIcon />} text="Clans Info" roundBottom={true} />
+      <PrettyHeader icon={<UsersIcon />} text="Clan Info" roundBottom={true} />
 
       <div>
         <PrettyHeader className="border-b-0">
@@ -94,6 +95,11 @@ export default function ClanPage(props: { params: Promise<{ id: number }> }) {
                 {/* Clan Members Panel */}
                 <div className="mt-6">
                   <ClanMembersPanel clan={clan} />
+                </div>
+
+                {/* Clan Recent Scores Panel */}
+                <div className="mt-6">
+                  <ClanRecentScoresPanel clan={clan} gameMode={activeMode} />
                 </div>
               </div>
             </>
