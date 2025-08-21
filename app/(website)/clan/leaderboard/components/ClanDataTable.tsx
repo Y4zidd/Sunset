@@ -28,6 +28,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import React, { createContext, useState } from "react";
+import ImageWithFallback from "@/components/ImageWithFallback";
 import {
   Select,
   SelectContent,
@@ -112,7 +113,17 @@ export function ClanDataTable<TData = ClanLeaderboardItem, TValue = unknown>({
                     ))}
 
                     <>
-                      <div className="absolute inset-0 -z-10 overflow-hidden" />
+                      <div className="absolute inset-0 -z-10 overflow-hidden">
+                        <ImageWithFallback
+                          src={(row.original as any).bannerUrl}
+                          alt="clan bg"
+                          fill={true}
+                          objectFit="cover"
+                          className="relative -z-20 -translate-x-2/4"
+                          fallBackSrc="/images/placeholder.png"
+                          fallBackClassName="opacity-0 group-hover:opacity-30"
+                        />
+                      </div>
                       <div className="absolute inset-0 bg-gradient-to-l from-accent to-accent/75 via-accent group-hover:to-accent/50 -z-10 -mx-1 smooth-transition" />
                     </>
                   </TableRow>
