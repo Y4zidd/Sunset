@@ -96,7 +96,7 @@ export default function ClanRequestsPage(props: { params: Promise<{ id: number }
           </div>
         </div>
         <RoundedContent>
-          <UploadClanImageForm clanId={clanId} type="avatar" initialUrl={(clan as any)?.avatarUrl ?? null} clanTag={(clan as any)?.tag} />
+          <UploadClanImageForm clanId={clanId} type="avatar" initialUrl={(clan as any)?.avatarUrl ? `${(clan as any).avatarUrl}?default=true` : null} clanTag={(clan as any)?.tag} />
         </RoundedContent>
       </div>
 
@@ -109,7 +109,7 @@ export default function ClanRequestsPage(props: { params: Promise<{ id: number }
           </div>
         </div>
         <RoundedContent>
-          <UploadClanImageForm clanId={clanId} type="banner" initialUrl={(clan as any)?.bannerUrl ?? null} />
+          <UploadClanImageForm clanId={clanId} type="banner" initialUrl={(clan as any)?.bannerUrl ? `${(clan as any).bannerUrl}?default=true` : null} />
         </RoundedContent>
       </div>
 

@@ -2,10 +2,10 @@
 
 import { ColumnDef } from "@tanstack/react-table";
 import { Button } from "@/components/ui/button";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { MoreHorizontal, SortAsc, SortDesc, Users } from "lucide-react";
 import Link from "next/link";
-import Image from "next/image";
+// Use AvatarImage for built-in fallback handling
 import { Suspense } from "react";
 import { ClanLeaderboardItem, ClanLeaderboardMetricUi } from "@/lib/hooks/api/clan/useClansLeaderboard";
 import UserRankColor from "@/components/UserRankNumber";
@@ -69,10 +69,11 @@ export function getClanColumns(metric: ClanLeaderboardMetricUi): ColumnDef<ClanL
       const { clanId, name, tag, avatarUrl } = row.original as any;
       return (
         <div className="p-3 relative flex flex-row items-center space-x-2">
-          <Avatar className="border-2 border-white">
+          <Avatar className="border-2 border-white w-[50px] h-[50px]">
             <Suspense fallback={<AvatarFallback className="text-[11px] font-bold">{tag}</AvatarFallback>}>
-              <Image src={avatarUrl} alt="logo" width={50} height={50} />
+              <AvatarImage src={avatarUrl ? `${avatarUrl}&default=false` : undefined} alt="logo" />
             </Suspense>
+            <AvatarFallback className="text-[11px] font-bold">{tag}</AvatarFallback>
           </Avatar>
           <Link href={`/clan/${clanId}`} className="hover:underline cursor-pointer smooth-transition">
             <UserRankColor

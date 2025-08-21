@@ -5,8 +5,9 @@ import { useToast } from "@/hooks/use-toast";
 import useSelf from "@/lib/hooks/useSelf";
 import { useLeaveClanMutation } from "@/lib/hooks/api/clan/useClanActions";
 import { useState } from "react";
+import { mutate } from "swr";
 
-export default function LeaveClanButton() {
+export default function LeaveClanButton({ clanId }: { clanId: number }) {
   const { toast } = useToast();
   const { revalidate } = useSelf();
   const [loading, setLoading] = useState(false);
@@ -23,7 +24,8 @@ export default function LeaveClanButton() {
         toast({ variant: "destructive", title: "Failed", description: err?.message ?? "Unable to leave clan" });
       });
     revalidate();
-    try { localStorage.removeItem(`clanJoinPending:${0}`); } catch {}
+    try { localStorage.removeItem(`clanJoinPending:${clanId}`); } catch {}
+    try { mutate(`clan/${clanId}/request/status`); } catch {}
     setLoading(false);
   };
 

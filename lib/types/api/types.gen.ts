@@ -752,6 +752,8 @@ export type UserResponse = {
     register_date: string;
     avatar_url: string;
     banner_url: string;
+    clan_id: number;
+    clan_priv: number;
     last_online_time: string;
     restricted: boolean;
     silenced_until?: string | null;

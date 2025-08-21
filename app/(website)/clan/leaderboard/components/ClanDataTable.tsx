@@ -114,15 +114,23 @@ export function ClanDataTable<TData = ClanLeaderboardItem, TValue = unknown>({
 
                     <>
                       <div className="absolute inset-0 -z-10 overflow-hidden">
-                        <ImageWithFallback
-                          src={(row.original as any).bannerUrl}
-                          alt="clan bg"
-                          fill={true}
-                          objectFit="cover"
-                          className="relative -z-20 -translate-x-2/4"
-                          fallBackSrc="/images/placeholder.png"
-                          fallBackClassName="opacity-0 group-hover:opacity-30"
-                        />
+                        {(() => {
+                          const url = (row.original as any).bannerUrl as string | undefined;
+                          const withParam = url
+                            ? `${url}${url.includes("?") ? "&" : "?"}default=false`
+                            : "/images/placeholder.png";
+                          return (
+                            <ImageWithFallback
+                              src={withParam}
+                              alt="clan bg"
+                              fill={true}
+                              objectFit="cover"
+                              className="relative -z-20 -translate-x-2/4"
+                              fallBackSrc="/images/placeholder.png"
+                              fallBackClassName="opacity-0 group-hover:opacity-30"
+                            />
+                          );
+                        })()}
                       </div>
                       <div className="absolute inset-0 bg-gradient-to-l from-accent to-accent/75 via-accent group-hover:to-accent/50 -z-10 -mx-1 smooth-transition" />
                     </>

@@ -25,6 +25,8 @@ import {
 } from "@/lib/types/api";
 import { timeSince } from "@/lib/utils/timeSince";
 import { useUserFriendsCount } from "@/lib/hooks/api/user/useUserFriends";
+import Link from "next/link";
+import { useClan } from "@/lib/hooks/api/clan/useClan";
 
 interface UserGeneralInformationProps {
   user: UserResponse;
@@ -41,8 +43,24 @@ export default function UserGeneralInformation({
 
   const friendsData = friendsQuery.data;
 
+  const clanId = (user as any).clan_id as number | undefined;
+  const clanQuery = clanId && clanId > 0 ? useClan(clanId, undefined) : null;
+  const clanTag = clanQuery?.data?.tag;
+
   return (
     <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm my-1 text-muted-foreground/70 mt-3">
+
+      {clanId && clanId > 0 && (
+        <>
+          {" "}
+          <Link href={`/clan/${clanId}`}>
+            <Badge className="ml-2 uppercase" variant="secondary">
+              #{clanTag ?? "CLAN"}
+            </Badge>
+          </Link>
+        </>
+      )}
+
       <div className="flex items-center gap-1">
         <Calendar className="h-4 w-4" />
         <span>

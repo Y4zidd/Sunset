@@ -19,7 +19,7 @@ export default function RequestJoinButton({ clanId }: RequestJoinButtonProps) {
   const [submitting, setSubmitting] = useState(false);
   const [pending, setPending] = useState<boolean>(false);
 
-  const { data: statusData } = useClanJoinRequestStatus(clanId);
+  const { data: statusData, mutate: revalidateStatus } = useClanJoinRequestStatus(clanId);
   const { trigger: sendRequest } = useClanJoinRequestMutation(clanId);
   const { trigger: revokeRequestMutation } = useClanJoinRevokeMutation(clanId);
 
@@ -50,6 +50,7 @@ export default function RequestJoinButton({ clanId }: RequestJoinButtonProps) {
     await sendRequest()
       .then(() => {
         toast({ title: "Request sent", description: "Your join request has been submitted." });
+        try { revalidateStatus(); } catch {}
       })
       .catch((err: any) => {
         setPending(false);
@@ -66,6 +67,7 @@ export default function RequestJoinButton({ clanId }: RequestJoinButtonProps) {
     await revokeRequestMutation()
       .then(() => {
         toast({ title: "Request canceled", description: "Your join request has been revoked." });
+        try { revalidateStatus(); } catch {}
       })
       .catch((err: any) => {
         setPending(true);
