@@ -3,7 +3,7 @@
 import React, { use } from "react";
 import PrettyHeader from "@/components/General/PrettyHeader";
 import RoundedContent from "@/components/General/RoundedContent";
-import { Users as UsersIcon, Check, X, Cog } from "lucide-react";
+import { Users as UsersIcon, Check, X, Cog, Image as ImageIcon } from "lucide-react";
 import { useClanRequests } from "@/lib/hooks/api/clan/useClanRequests";
 import { Button } from "@/components/ui/button";
 import fetcher from "@/lib/services/fetcher";
@@ -17,6 +17,7 @@ import { useRouter } from "next/navigation";
 import UserElement from "@/components/UserElement";
 import { UserResponse } from "@/lib/types/api";
 import { useToast } from "@/hooks/use-toast";
+import UploadClanImageForm from "./components/UploadClanImageForm";
 
 export default function ClanRequestsPage(props: { params: Promise<{ id: number }> }) {
   const params = use(props.params);
@@ -85,6 +86,32 @@ export default function ClanRequestsPage(props: { params: Promise<{ id: number }
   return (
     <div className="flex flex-col w-full space-y-4">
       <PrettyHeader icon={<Cog className="mr-2" />} text="Manage server" roundBottom={true} />
+
+      {/* Upload clan logo */}
+      <div className="space-y-0">
+        <div className="bg-card rounded-t-lg p-4 flex shadow">
+          <div className="flex space-x-2 items-center">
+            <ImageIcon />
+            <p className="font-medium">Clan logo</p>
+          </div>
+        </div>
+        <RoundedContent>
+          <UploadClanImageForm clanId={clanId} type="avatar" initialUrl={(clan as any)?.avatarUrl ?? null} clanTag={(clan as any)?.tag} />
+        </RoundedContent>
+      </div>
+
+      {/* Upload clan banner */}
+      <div className="space-y-0">
+        <div className="bg-card rounded-t-lg p-4 flex shadow">
+          <div className="flex space-x-2 items-center">
+            <ImageIcon />
+            <p className="font-medium">Clan banner</p>
+          </div>
+        </div>
+        <RoundedContent>
+          <UploadClanImageForm clanId={clanId} type="banner" initialUrl={(clan as any)?.bannerUrl ?? null} />
+        </RoundedContent>
+      </div>
 
       <div className="space-y-0">
         <div className="bg-card rounded-t-lg p-4 flex shadow">

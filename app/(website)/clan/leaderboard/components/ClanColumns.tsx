@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { MoreHorizontal, SortAsc, SortDesc, Users } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
+import { Suspense } from "react";
 import { ClanLeaderboardItem, ClanLeaderboardMetricUi } from "@/lib/hooks/api/clan/useClansLeaderboard";
 import UserRankColor from "@/components/UserRankNumber";
 import {
@@ -53,7 +55,6 @@ export function getClanColumns(metric: ClanLeaderboardMetricUi): ColumnDef<ClanL
     },
     sortingFn: (a, b) => (a.original.rank ?? 0) - (b.original.rank ?? 0),
   },
-  // Placeholder kolom bendera (kosong) agar alignment sama seperti leaderboard user
   {
     id: "flag-placeholder",
     size: 40,
@@ -65,11 +66,13 @@ export function getClanColumns(metric: ClanLeaderboardMetricUi): ColumnDef<ClanL
     size: 380,
     header: "",
     cell: ({ row }) => {
-      const { clanId, name, tag } = row.original;
+      const { clanId, name, tag, avatarUrl } = row.original as any;
       return (
-        <div className="min-w-[260px] p-3 relative flex flex-row items-center space-x-2">
-          <Avatar className="border-2 border-white w-[50px] h-[50px] shrink-0">
-            <AvatarFallback className="text-[11px] font-bold">{tag}</AvatarFallback>
+        <div className="p-3 relative flex flex-row items-center space-x-2">
+          <Avatar className="border-2 border-white">
+            <Suspense fallback={<AvatarFallback className="text-[11px] font-bold">{tag}</AvatarFallback>}>
+              <Image src={avatarUrl} alt="logo" width={50} height={50} />
+            </Suspense>
           </Avatar>
           <Link href={`/clan/${clanId}`} className="hover:underline cursor-pointer smooth-transition">
             <UserRankColor

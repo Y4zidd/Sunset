@@ -21,6 +21,8 @@ export interface ClanLeaderboardItem {
   avgAcc: number;
   playCount: number;
   rank: number;
+  avatarUrl: string;
+  bannerUrl: string;
 }
 
 export interface GetClanLeaderboardResponse {

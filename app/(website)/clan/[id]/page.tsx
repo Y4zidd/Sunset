@@ -5,7 +5,7 @@ import PrettyHeader from "@/components/General/PrettyHeader";
 import RoundedContent from "@/components/General/RoundedContent";
 import Image from "next/image";
 import { Users as UsersIcon } from "lucide-react";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import RequestJoinButton from "./components/RequestJoinButton";
 import LeaveClanButton from "./components/LeaveClanButton";
 import ClanGeneralInformation from "./components/ClanGeneralInformation";
@@ -59,12 +59,13 @@ export default function ClanPage(props: { params: Promise<{ id: number }> }) {
           {clan ? (
             <>
               <div className="lg:h-64 md:h-44 h-32 relative">
-                <Image src="/images/placeholder.png" alt="Clan banner" fill={true} objectFit="cover" className="bg-black rounded-t-lg" />
+                <Image src={((clan as any).bannerUrl as string) || "/images/placeholder.png"} alt="Clan banner" fill={true} objectFit="cover" className="bg-black rounded-t-lg" />
                 <div className="absolute inset-0 bg-gradient-to-t from-card via-card/20 to-transparent flex w-full">
                   <div className="relative overflow-hidden px-4 py-2 md:p-6 flex items-end place-content-between flex-grow">
                     <div className="flex items-end space-x-4 w-3/4 ">
                       <div className="relative w-16 h-16 md:w-32 md:h-32 flex-none">
                         <Avatar className="w-full h-full rounded-full border-2 md:border-4 border-secondary">
+                          <AvatarImage src={(clan as any).avatarUrl as string} alt="Clan logo" />
                           <AvatarFallback className="text-lg md:text-2xl font-bold">{clan.tag}</AvatarFallback>
                         </Avatar>
                       </div>
@@ -102,7 +103,7 @@ export default function ClanPage(props: { params: Promise<{ id: number }> }) {
                   ) : null}
                   {showManageRequests ? (
                     <Button onClick={() => router.push(`/clan/${clan.id}/requests`)}>
-                      Manage Server
+                      Manage Requests
                     </Button>
                   ) : null}
                 </div>
@@ -119,8 +120,6 @@ export default function ClanPage(props: { params: Promise<{ id: number }> }) {
                 <div className="mt-6">
                   <ClanMembersPanel clan={clan} />
                 </div>
-
-                {null}
 
                 <div className="mt-6">
                   <ClanRecentScoresPanel clan={clan} gameMode={activeMode} />

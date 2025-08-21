@@ -20,6 +20,8 @@ export interface ClanDetailResponse {
   members: ClanMemberItem[];
   owner?: { id: number; name: string } | null;
   ownerLastActive?: string | null;
+  avatarUrl?: string | null;
+  bannerUrl?: string | null;
   rankTotalPp?: number;
   rankAveragePp?: number;
   rankRankedScore?: number;
