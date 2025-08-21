@@ -12,6 +12,25 @@ interface ClanMembersPanelProps {
 }
 
 export default function ClanMembersPanel({ clan }: ClanMembersPanelProps) {
+	const roleWeightByUserId = useMemo(() => {
+		const map = new Map<number, number>();
+		for (const member of clan.members || []) {
+			let weight = member.rank === "Owner" ? 3 : member.rank === "Officer" ? 2 : 1;
+			if ((clan as any).ownerId === member.id) weight = 4;
+			map.set(member.id, weight);
+		}
+		return map;
+	}, [clan.members]);
+
+	const sortUsersByRole = (list: UserResponse[]) => {
+		return [...list].sort((a, b) => {
+			const weightA = roleWeightByUserId.get(a.user_id) ?? 0;
+			const weightB = roleWeightByUserId.get(b.user_id) ?? 0;
+			if (weightA === weightB) return 0;
+			return weightA > weightB ? -1 : 1;
+		});
+	};
+
 	const fallbackUsers = useMemo<UserResponse[]>(
 		() =>
 			(clan.members || []).map((member) => ({
@@ -32,7 +51,7 @@ export default function ClanMembersPanel({ clan }: ClanMembersPanelProps) {
 		[clan.members]
 	);
 
-	const [users, setUsers] = useState<UserResponse[]>(fallbackUsers);
+	const [users, setUsers] = useState<UserResponse[]>(sortUsersByRole(fallbackUsers));
 
 	useEffect(() => {
 		let cancelled = false;
@@ -45,7 +64,7 @@ export default function ClanMembersPanel({ clan }: ClanMembersPanelProps) {
 				);
 				const detailed = results.filter(Boolean) as UserResponse[];
 				if (!cancelled && detailed.length > 0) {
-					setUsers(detailed);
+					setUsers(sortUsersByRole(detailed));
 				}
 			} catch {}
 		}
@@ -60,7 +79,7 @@ export default function ClanMembersPanel({ clan }: ClanMembersPanelProps) {
 			<PrettyHeader text="Clan Members" icon={<Users className="mr-2" />} className="border-b-0" />
 			<div className="rounded-b-3xl bg-card mb-4 border border-t-0 shadow">
 				<RoundedContent className="rounded-t-xl border-none shadow-none">
-					<UsersList users={users} viewMode="grid" includeFriendshipButton={false} />
+					<UsersList users={sortUsersByRole(users)} viewMode="grid" includeFriendshipButton={false} />
 				</RoundedContent>
 			</div>
 		</div>

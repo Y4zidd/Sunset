@@ -17,12 +17,14 @@ interface UserProfileBannerProps {
   user: UserResponse;
   includeFriendshipButton?: boolean;
   className?: string;
+  rightSlot?: React.ReactNode;
 }
 
 export default function UserElement({
   user,
   includeFriendshipButton = false,
   className,
+  rightSlot,
 }: UserProfileBannerProps) {
   const router = useRouter();
 
@@ -47,7 +49,7 @@ export default function UserElement({
 
         <Link
           href={`/user/${user.user_id}`}
-          className="relative flex place-content-between h-24 p-4"
+          className="relative flex place-content-between flex-1 p-4"
         >
           <div className="relative flex items-start overflow-hidden flex-1 min-w-0">
             {/* Profile Picture */}
@@ -61,7 +63,7 @@ export default function UserElement({
               />
             </div>
 
-            {/* Username, Flag, and Status */}
+            {/* Username, Flag, Badges */}
             <div className="flex flex-col flex-1 min-w-0">
               <div className="flex items-center mb-1">
                 <h2 className="text-white md:text-lg lg:text-xl font-bold mr-2 truncate">
@@ -74,7 +76,17 @@ export default function UserElement({
                   alt="User Flag"
                   className="w-8 h-8 flex-shrink-0"
                 />
-                <div className="flex items-center gap-1 flex-shrink-0">
+                <div
+                  className="flex items-center gap-1 flex-shrink-0"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                  }}
+                  onMouseDown={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                  }}
+                >
                   <UserPrivilegeBadges badges={user.badges} small={true} />
                   <UserCustomBadges
                     customBadges={
@@ -89,12 +101,14 @@ export default function UserElement({
             </div>
           </div>
 
-          {includeFriendshipButton && (
-            <FriendshipButton
-              userId={user.user_id}
-              className="w-10 h-10 flex-shrink-0"
-              includeText={false}
-            />
+          {rightSlot ?? (
+            includeFriendshipButton && (
+              <FriendshipButton
+                userId={user.user_id}
+                className="w-10 h-10 flex-shrink-0"
+                includeText={false}
+              />
+            )
           )}
         </Link>
 

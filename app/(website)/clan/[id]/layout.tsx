@@ -1,5 +1,4 @@
 import { Metadata } from "next";
-import Page from "./page";
 import { notFound } from "next/navigation";
 import fetcher from "@/lib/services/fetcher";
 
@@ -32,7 +31,9 @@ export async function generateMetadata(props: {
   };
 }
 
-export default Page;
+export default function Layout({ children }: { children: React.ReactNode }) {
+  return children;
+}
 
 
 

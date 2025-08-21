@@ -7,6 +7,7 @@ import Image from "next/image";
 import { Users as UsersIcon } from "lucide-react";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import RequestJoinButton from "./components/RequestJoinButton";
+import LeaveClanButton from "./components/LeaveClanButton";
 import ClanGeneralInformation from "./components/ClanGeneralInformation";
 import ClanInfoPanel from "./components/ClanInfoPanel";
 import ClanPerformancePanel from "./components/ClanPerformancePanel";
@@ -16,6 +17,9 @@ import { useClan } from "@/lib/hooks/api/clan/useClan";
 import useSelf from "@/lib/hooks/useSelf";
 import GameModeSelector from "@/components/GameModeSelector";
 import { GameMode } from "@/lib/types/api";
+import { Button } from "@/components/ui/button";
+import UserRankColor from "@/components/UserRankNumber";
+import { useRouter } from "next/navigation";
 
 export default function ClanPage(props: { params: Promise<{ id: number }> }) {
   const params = use(props.params);
@@ -24,12 +28,23 @@ export default function ClanPage(props: { params: Promise<{ id: number }> }) {
   const [activeMode, setActiveMode] = React.useState<GameMode>(GameMode.STANDARD);
   const clanQuery = useClan(clanId, activeMode);
   const clan = clanQuery.data;
+  const topRank = clan
+    ? ([
+        (clan as any).rankTotalPp,
+        (clan as any).rankAveragePp,
+        (clan as any).rankRankedScore,
+        (clan as any).rankAccuracy,
+      ] as Array<number | undefined>)
+        .find((v) => typeof v === "number" && v! >= 1 && v! <= 3)
+    : undefined;
   const { self } = useSelf();
+  const router = useRouter();
 
-  const showRequestJoin = (() => {
-    if (!self || !clan) return false;
-    return self.user_id !== clan.ownerId;
-  })();
+  const isOwner = !!self && !!clan && self.user_id === clan.ownerId;
+  const isMember = !!self && !!clan && (clan.members || []).some((m) => m.id === self.user_id);
+
+  const showRequestJoin = !!self && !!clan && !isOwner && !isMember;
+  const showManageRequests = !!self && !!clan && self.user_id === clan.ownerId;
 
   return (
     <div className="flex flex-col space-y-4">
@@ -37,23 +52,14 @@ export default function ClanPage(props: { params: Promise<{ id: number }> }) {
 
       <div>
         <PrettyHeader className="border-b-0">
-          <GameModeSelector
-            activeMode={activeMode}
-            setActiveMode={setActiveMode}
-          />
+          <GameModeSelector activeMode={activeMode} setActiveMode={setActiveMode} />
         </PrettyHeader>
 
         <RoundedContent className="rounded-lg-b p-0 border-t-0 bg-card">
           {clan ? (
             <>
               <div className="lg:h-64 md:h-44 h-32 relative">
-                <Image
-                  src="/images/placeholder.png"
-                  alt="Clan banner"
-                  fill={true}
-                  objectFit="cover"
-                  className="bg-black rounded-t-lg"
-                />
+                <Image src="/images/placeholder.png" alt="Clan banner" fill={true} objectFit="cover" className="bg-black rounded-t-lg" />
                 <div className="absolute inset-0 bg-gradient-to-t from-card via-card/20 to-transparent flex w-full">
                   <div className="relative overflow-hidden px-4 py-2 md:p-6 flex items-end place-content-between flex-grow">
                     <div className="flex items-end space-x-4 w-3/4 ">
@@ -64,7 +70,17 @@ export default function ClanPage(props: { params: Promise<{ id: number }> }) {
                       </div>
                       <div className="flex flex-col flex-grow min-w-0">
                         <div className="flex flex-col md:flex-row flex-wrap gap-x-1">
-                          <p className="md:text-3xl text-lg font-bold truncate mt-0.5">{clan.name}</p>
+                          {typeof topRank === "number" ? (
+                            <UserRankColor
+                              className="md:text-3xl text-lg font-bold truncate mt-0.5"
+                              variant="primary"
+                              rank={topRank}
+                            >
+                              {clan.name}
+                            </UserRankColor>
+                          ) : (
+                            <p className="md:text-3xl text-lg font-bold truncate mt-0.5">{clan.name}</p>
+                          )}
                         </div>
                         <p className="text-sm text-muted-foreground/80">Owner: <a href={`/user/${clan.ownerId}`} className="hover:underline">{clan.owner?.name ?? "Unknown"}</a></p>
                       </div>
@@ -79,10 +95,18 @@ export default function ClanPage(props: { params: Promise<{ id: number }> }) {
                   <div className="flex flex-wrap gap-2">
                     <ClanGeneralInformation tag={clan.tag} createdAt={clan.createdAt} memberCount={clan.memberCount} />
                   </div>
-                  {showRequestJoin ? <RequestJoinButton clanId={clan.id} /> : null}
+                  {showRequestJoin ? (
+                    <RequestJoinButton clanId={clan.id} />
+                  ) : isMember && !isOwner ? (
+                    <LeaveClanButton />
+                  ) : null}
+                  {showManageRequests ? (
+                    <Button onClick={() => router.push(`/clan/${clan.id}/requests`)}>
+                      Manage Server
+                    </Button>
+                  ) : null}
                 </div>
-                
-                {/* Info and Performance Panels */}
+
                 <div className="grid grid-cols-1 lg:grid-cols-3 lg:gap-4 gap-4 mt-6">
                   <div className="flex flex-col col-span-2 sm:col-span-1">
                     <ClanInfoPanel clan={clan} />
@@ -92,12 +116,12 @@ export default function ClanPage(props: { params: Promise<{ id: number }> }) {
                   </div>
                 </div>
 
-                {/* Clan Members Panel */}
                 <div className="mt-6">
                   <ClanMembersPanel clan={clan} />
                 </div>
 
-                {/* Clan Recent Scores Panel */}
+                {null}
+
                 <div className="mt-6">
                   <ClanRecentScoresPanel clan={clan} gameMode={activeMode} />
                 </div>
