@@ -2,6 +2,7 @@ import Spinner from "@/components/Spinner";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { useToast } from "@/hooks/use-toast";
 import Image from "next/image";
+import { useId } from "react";
 
 type Props = {
   setFile: React.Dispatch<React.SetStateAction<File | null>>;
@@ -16,7 +17,7 @@ export default function ImageSelect({
   isWide,
   maxFileSizeBytes,
 }: Props) {
-  const uniqueId = Math.random().toString(36).substring(7);
+  const uniqueId = useId();
 
   const { toast } = useToast();
 
@@ -65,8 +66,8 @@ export default function ImageSelect({
                   <Image
                     src={URL.createObjectURL(file)}
                     alt="avatar"
-                    fill={true}
-                    objectFit="cover"
+                    fill
+                    style={{ objectFit: "cover" }}
                     className="w-full h-full rounded-lg hover:opacity-80 smooth-transition"
                   />
                 </AspectRatio>

@@ -41,7 +41,7 @@ export default function RequestJoinButton({ clanId }: RequestJoinButtonProps) {
       } catch {}
     }
     return () => { mounted = false; };
-  }, [clanId]);
+  }, [clanId, statusData]);
 
   const requestJoin = async () => {
     setSubmitting(true);

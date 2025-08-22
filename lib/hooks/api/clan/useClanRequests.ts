@@ -17,9 +17,19 @@ export interface ClanJoinRequestsResponse {
   pageSize?: number;
 }
 
-export function useClanRequests(clanId: number | null, status: string = "Pending", page: number = 0, pageSize: number = 50) {
+export function useClanRequests(
+  clanId: number | null,
+  status: string = "Pending",
+  page: number = 0,
+  pageSize: number = 50
+) {
   const key = clanId ? `clan/${clanId}/requests?status=${status}&page=${page}&pageSize=${pageSize}` : null;
-  return useSWR<ClanJoinRequestsResponse | ClanJoinRequestItem[]>(key, fetcher);
+  return useSWR<ClanJoinRequestsResponse | ClanJoinRequestItem[]>(key, fetcher, {
+    revalidateOnFocus: true,
+    revalidateOnReconnect: true,
+    revalidateIfStale: true,
+    refreshInterval: 5000,
+  });
 }
 
 

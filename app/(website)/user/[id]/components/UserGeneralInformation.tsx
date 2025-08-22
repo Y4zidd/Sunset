@@ -54,7 +54,10 @@ export default function UserGeneralInformation({
         <>
           {" "}
           <Link href={`/clan/${clanId}`}>
-            <Badge className="ml-2 uppercase" variant="secondary">
+            <Badge
+              variant="secondary"
+              className="text-xs rounded-xl border-primary/30 bg-primary/5 text-primary px-3 py-1 shadow-sm uppercase"
+            >
               #{clanTag ?? "CLAN"}
             </Badge>
           </Link>
