@@ -4,7 +4,7 @@ import React, { use } from "react";
 import PrettyHeader from "@/components/General/PrettyHeader";
 import RoundedContent from "@/components/General/RoundedContent";
 import ImageWithFallback from "@/components/ImageWithFallback";
-import { Users as UsersIcon } from "lucide-react";
+import { Users as UsersIcon, Bell } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import RequestJoinButton from "./components/RequestJoinButton";
 import LeaveClanButton from "./components/LeaveClanButton";
@@ -20,6 +20,7 @@ import { GameMode } from "@/lib/types/api";
 import { Button } from "@/components/ui/button";
 import UserRankColor from "@/components/UserRankNumber";
 import { useRouter } from "next/navigation";
+import { useClanRequests } from "@/lib/hooks/api/clan/useClanRequests";
 
 export default function ClanPage(props: { params: Promise<{ id: number }> }) {
   const params = use(props.params);
@@ -45,6 +46,11 @@ export default function ClanPage(props: { params: Promise<{ id: number }> }) {
 
   const showRequestJoin = !!self && !!clan && !isOwner && !isMember;
   const showManageRequests = !!self && !!clan && self.user_id === clan.ownerId;
+
+  const requestsQuery = useClanRequests(isOwner ? clanId : null);
+  const pendingCount = Array.isArray(requestsQuery.data)
+    ? requestsQuery.data.length
+    : ((requestsQuery.data as any)?.items?.length ?? 0);
 
   return (
     <div className="flex flex-col space-y-4">
@@ -109,8 +115,13 @@ export default function ClanPage(props: { params: Promise<{ id: number }> }) {
                     <LeaveClanButton clanId={clan.id} />
                   ) : null}
                   {showManageRequests ? (
-                    <Button onClick={() => router.push(`/clan/${clan.id}/requests`)}>
-                      Manage Requests
+                    <Button className="relative" onClick={() => router.push(`/clan/${clan.id}/requests`)}>
+                      Manage Server
+                      {pendingCount > 0 && (
+                        <span className="absolute -top-2 -right-2 inline-flex items-center justify-center rounded-full bg-yellow-400 text-card border border-card w-5 h-5">
+                          <Bell className="w-3 h-3" />
+                        </span>
+                      )}
                     </Button>
                   ) : null}
                 </div>
