@@ -50,7 +50,7 @@ export default function UserGeneralInformation({
   return (
     <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm my-1 text-muted-foreground/70 mt-3">
 
-      {clanId && clanId > 0 && (
+      {(clanId ?? 0) > 0 && (
         <>
           {" "}
           <Link href={`/clan/${clanId}`}>
