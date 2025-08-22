@@ -22,6 +22,8 @@ export default function ClanMemberUserElement({ userId, username, country }: Cla
     register_date: new Date().toISOString(),
     avatar_url: `https://a.${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/avatar/${userId}`,
     banner_url: `https://a.${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/banner/${userId}`,
+    clan_id: 0,
+    clan_priv: 0,
     last_online_time: new Date().toISOString(),
     restricted: false,
     silenced_until: null,

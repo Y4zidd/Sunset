@@ -41,6 +41,8 @@ export default function ClanMembersPanel({ clan }: ClanMembersPanelProps) {
 				register_date: new Date().toISOString(),
 				avatar_url: `https://a.${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/avatar/${member.id}`,
 				banner_url: `https://a.${process.env.NEXT_PUBLIC_SERVER_DOMAIN}/banner/${member.id}`,
+				clan_id: clan.id,
+				clan_priv: 0,
 				last_online_time: new Date().toISOString(),
 				restricted: false,
 				silenced_until: null,
