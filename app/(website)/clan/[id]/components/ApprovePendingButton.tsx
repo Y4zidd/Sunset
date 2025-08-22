@@ -9,7 +9,6 @@ interface ApprovePendingButtonProps {
   onDeny?: () => void;
 }
 
-// Placeholder UI: wiring ke API akan ditambahkan setelah endpoint join-requests diintegrasikan ke frontend
 export default function ApprovePendingButton({ className, onApprove, onDeny }: ApprovePendingButtonProps) {
   return (
     <div className={`flex gap-2 ${className ?? ""}`}>

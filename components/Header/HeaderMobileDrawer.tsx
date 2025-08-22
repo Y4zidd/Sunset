@@ -53,6 +53,11 @@ const navigationList = [
     url: "/leaderboard",
   },
   {
+    icon: <Users2 />,
+    title: "Clans",
+    url: "/clan/leaderboard",
+  },
+  {
     icon: <LucideHistory />,
     title: "Top plays",
     url: "/topplays",

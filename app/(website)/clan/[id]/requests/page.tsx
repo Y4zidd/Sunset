@@ -13,7 +13,6 @@ import {
 } from "@/lib/hooks/api/clan/useClanActions";
 import { useClan } from "@/lib/hooks/api/clan/useClan";
 import useSelf from "@/lib/hooks/useSelf";
-import { useRouter } from "next/navigation";
 import UserElement from "@/components/UserElement";
 import { UserResponse } from "@/lib/types/api";
 import { useToast } from "@/hooks/use-toast";
@@ -22,7 +21,6 @@ import UploadClanImageForm from "./components/UploadClanImageForm";
 export default function ClanRequestsPage(props: { params: Promise<{ id: number }> }) {
   const params = use(props.params);
   const clanId = Number(params.id);
-  const router = useRouter();
   const { self } = useSelf();
   const clanQuery = useClan(clanId);
   const clan = clanQuery.data;
@@ -47,11 +45,7 @@ export default function ClanRequestsPage(props: { params: Promise<{ id: number }
     };
   }, [requestsQuery.data]);
 
-  React.useEffect(() => {
-    if (self && clan && !isOwner) {
-      router.replace(`/clan/${clanId}`);
-    }
-  }, [self, clan, isOwner, clanId, router]);
+  // Show access messages instead of redirecting so users understand requirements
 
   const { trigger: approveTrigger } = useApproveClanRequestMutation(clanId);
   const { trigger: denyTrigger } = useDenyClanRequestMutation(clanId);
@@ -79,8 +73,26 @@ export default function ClanRequestsPage(props: { params: Promise<{ id: number }
     requestsQuery.mutate();
   };
 
+  if (!self) {
+    return (
+      <div className="flex flex-col w-full space-y-4">
+        <PrettyHeader icon={<Cog className="mr-2" />} text="Manage server" roundBottom={true} />
+        <RoundedContent>
+          <p className="font-medium">You must be logged in to view this page.</p>
+        </RoundedContent>
+      </div>
+    );
+  }
+
   if (self && clan && !isOwner) {
-    return null;
+    return (
+      <div className="flex flex-col w-full space-y-4">
+        <PrettyHeader icon={<Cog className="mr-2" />} text="Manage server" roundBottom={true} />
+        <RoundedContent>
+          <p className="font-medium">Only the clan owner can view this page.</p>
+        </RoundedContent>
+      </div>
+    );
   }
 
   return (
