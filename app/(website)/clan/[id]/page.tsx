@@ -106,7 +106,7 @@ export default function ClanPage(props: { params: Promise<{ id: number }> }) {
 
               <div className="px-6 py-4 bg-card">
                 <div className="flex justify-between items-start">
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm my-1 text-muted-foreground/70 mt-3">
                     <ClanGeneralInformation tag={clan.tag} createdAt={clan.createdAt} memberCount={clan.memberCount} />
                   </div>
                   {showRequestJoin ? (
