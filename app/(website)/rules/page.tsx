@@ -13,16 +13,16 @@ export default function Wiki() {
           <div className="flex flex-col w-11/12 mx-auto">
             <ol className="list-decimal list-inside space-y-2">
               <li className="text-xl">
-                <span className="font-bold">Cheating is Allowed, But No Replay Bots. </span> You
-                can use any form of cheating including aimbots, relax hacks, macros, or
-                modified clients as this is an unrestricted sandbox server. However,
-                replay bots are strictly forbidden and will result in a permanent ban.
+                <span className="font-bold">Cheating is Allowed, But No Replay Bots or Autobots. </span> You
+                can use any form of cheating, including aimbots, relax hacks, timewarp, or
+                modified clients, as this is an unrestricted sandbox server. However,
+                replay bots and autobots are strictly forbidden and will result in a permanent ban.
               </li>
               <span className="text-secondary-foreground text-xs">
-                As you can see, I wrote this in a bigger font for all you
-                "wannabe" replay bot users who think you can migrate from another
-                private server to here after being banned. You will be found and
-                executed (in Minecraft) if you use replay bots. So please, don’t.
+                As you can see, I wrote this in a larger font for all you
+                "wannabe" replay or autobot users who think you can migrate here from another
+                private server after being banned. You will be found and
+                executed (in Minecraft) if you use replay or autobots. So please, don’t.
               </span>
               <li>
                 <span className="font-bold">

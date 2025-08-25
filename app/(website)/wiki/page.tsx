@@ -77,8 +77,8 @@ const wikiContent = [
           <h1 className="text-xl">Yes, you can cheat freely as you wish!</h1>
           <p className="mt-2">
             This is an unrestricted sandbox server where cheating is allowed.
-            However, replay bots are strictly forbidden and will result in a ban.
-            If you suspect someone of using replay bots, please report them to the staff.
+            However, replay bots and autobots are strictly forbidden and will result in a permanent ban.
+            If you suspect someone of using replay or autobots, please report them to the staff.
           </p>
         </div>
       </RoundedContent>
